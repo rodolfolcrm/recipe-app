@@ -1,20 +1,35 @@
 <div class="row">
   <div class="col-xs-12">
-    <form>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
       <div class="row">
         <div class="col-sm-5 form-group">
           <label for="name">Name</label>
-          <input type="text" id="name" class="form-control" #nameInput>
+          <input 
+            type="text" 
+            id="name"
+            name="name" 
+            class="form-control" 
+            ngModel
+            required>
+           <!-- <span class="help-block" *ngIf="!f.value.name.valid && !f.value.name.touched">Number is required</span>-->
         </div>
         <div class="col-sm-2 form-group">
           <label for="amount">Amount</label>
-          <input type="number" id="amount" class="form-control" #amountInput>
+          <input 
+            type="number" 
+            id="amount"
+            name="amount" 
+            class="form-control" 
+            ngModel
+            required
+            pattern="^[1-9]+[0-9]*$">
+            <!-- <span class="help-block" *ngIf="!f.value.amount.valid && !f.value.amount.touched">Number is required</span> -->
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <button type="submit" class="btn btn-success" (click)="onAdd()">Add</button>
-          <button type="button" class="btn btn-danger" (click)="onDelete()">Delete</button>
+          <button type="submit" class="btn btn-success" [disabled]="!f.valid">{{editMode ? 'Update' : 'Add'}}</button>
+          <button type="button" class="btn btn-danger" (click)="onDelete()" [disabled]="!editMode">Delete</button>
           <button type="button" class="btn btn-primary" (click)="onClear()">Clear</button>
         </div>
       </div>

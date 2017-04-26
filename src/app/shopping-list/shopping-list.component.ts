@@ -26,10 +26,6 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
   itemAdded(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
   }
@@ -37,4 +33,14 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   itemRemoved(ingredient: Ingredient) {
 
   }
+
+  onEditIngredient(index: number){
+    console.log(index);
+    this.shoppingListService.startEditing.next(index);
+  }
+
+    ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
 }
