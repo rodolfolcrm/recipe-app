@@ -1,5 +1,4 @@
 import { Component, Injectable } from '@angular/core';
-import { Response } from "@angular/http";
 
 import { DataStorageService } from "app/shared/data-storage.service";
 import { AuthService } from "app/auth/auth.service";
@@ -10,25 +9,25 @@ import { AuthService } from "app/auth/auth.service";
     templateUrl: './header.component.html'
 })
 @Injectable()
-export class HeaderComponent{
+export class HeaderComponent {
 
     constructor(private dataStorageService: DataStorageService,
-    private authService: AuthService){}
+        private authService: AuthService) { }
 
-    onSaveData(){
+    onSaveData() {
         this.dataStorageService.storeRecipes()
-        .subscribe(
-            (response: Response) => {
-                console.log(response);
-            }
-        );
+            .subscribe(
+                (response) => {
+                    console.log(response);
+                }
+            );
     }
 
-    onFetchData(){
+    onFetchData() {
         this.dataStorageService.fetchRecipies();
     }
 
-    onLogout(){
+    onLogout() {
         this.authService.logout();
     }
 }
