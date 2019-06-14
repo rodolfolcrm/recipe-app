@@ -7,12 +7,12 @@ import * as firebase from 'firebase';
 export class AuthService {
     token: string;
 
-    constructor(private router: Router){}
+    constructor(private router: Router) { }
 
     signupUser(email: string, password: string) {
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .catch(
-            error => console.log(error)
+                error => console.log(error)
             )
     }
 
@@ -20,38 +20,38 @@ export class AuthService {
         console.log("signinUser");
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(
-            response => {
-                console.log(response);
-                this.router.navigate(['/']);
+                response => {
+                    console.log(response);
+                    this.router.navigate(['/']);
 
-                firebase.auth().currentUser.getToken()
-                    .then(
-                        (token: string) => {
-                            this.token = token;                            
-                        }
-                    )
-            }
+                    firebase.auth().currentUser.getIdToken()
+                        .then(
+                            (token: string) => {
+                                this.token = token;
+                            }
+                        )
+                }
             )
             .catch(
-            error => console.log(error)
+                error => console.log(error)
             )
     }
 
-    logout(){
+    logout() {
         firebase.auth().signOut();
         this.token = null;
         this.router.navigate(['/']);
     }
 
     getToken() {
-        firebase.auth().currentUser.getToken()
+        firebase.auth().currentUser.getIdToken()
             .then(
-            (token: string) => this.token = token
-            )        
+                (token: string) => this.token = token
+            )
         return this.token;
     }
 
-    isAuthenticated(){
+    isAuthenticated() {
         return this.token != null;
     }
 }

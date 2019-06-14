@@ -10,7 +10,7 @@ import { NgForm } from "@angular/forms";
   styleUrls: ['./shopping-edit.component.css']
 })
 export class ShoppingEditComponent implements OnInit {  
-  @ViewChild('f') slForm: NgForm;
+  @ViewChild('f', { static: true }) slForm: NgForm;
   
 
   editMode = false;

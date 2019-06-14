@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Recipe } from "app/recipies/recipe.model";
 import { Ingredient } from "app/shared/ingredient.model";
 import { ShoppingListService } from "app/shopping-list/shopping-list.service";
-import { Subject } from "rxjs/Subject";
+import { Subject } from "rxjs";
 
 @Injectable()
 export class RecipeService {
