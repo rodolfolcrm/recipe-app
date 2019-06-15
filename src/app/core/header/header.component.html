@@ -9,7 +9,7 @@
             <a routerLink="/" class="navbar-brand">Recipe Book</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav" *ngIf="authService.isAuthenticated()">
                 <li routerLinkActive="active"><a routerLink="/recipes">Recipies</a></li>
                 <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
             </ul>
@@ -20,8 +20,8 @@
                 </ng-template>
                 <li><a style="cursor: pointer" (click)="onLogout()" *ngIf="authService.isAuthenticated()">Logout</a>
                 </li>
-                <li class="dropdown" appDropdown *ngIf="authService.isAuthenticated()">
-                    <a style="cursor: pointer" class="dropdown-toggle" role="button">Manage <span
+                <li class="dropdown" *ngIf="authService.isAuthenticated()">
+                    <a style="cursor: pointer" class="dropdown-toggle" data-toggle="dropdown" role="button">Manage <span
                             class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a style="cursor: pointer" (click)="onSaveData()">Save Data</a></li>
