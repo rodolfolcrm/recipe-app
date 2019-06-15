@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { RecipeService } from "app/recipies/recipe.service";
 
 import * as firebase from "firebase/app";
 import 'firebase/auth';

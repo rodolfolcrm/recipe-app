@@ -11,7 +11,7 @@ export class RecipeService {
 
     constructor(private shoppingListService: ShoppingListService) { }
 
-    setRecipes(recipes: Recipe[]){
+    setRecipes(recipes: Recipe[]) {
         this.recipies = recipes;
         this.recipesChanged.next(this.recipies.slice());
     }
@@ -25,7 +25,7 @@ export class RecipeService {
 
         new Recipe('Spagheti',
             'Delicious spagheti',
-            'http://media.dish.allrecipes.com/wp-content/uploads/2015/07/795486_Beef-Stroganoff-III_Photo-by-abapplez-resize.jpg',
+            'https://i.kinja-img.com/gawker-media/image/upload/s--ZPatPSbC--/c_scale,f_auto,fl_progressive,q_80,w_800/ikozhddomny27gnqpop4.jpg',
             [new Ingredient('Spagheti', 5),
             new Ingredient('Tomato', 1)])
     ];
@@ -34,25 +34,25 @@ export class RecipeService {
         return this.recipies.slice();
     }
 
-    getRecipe(index: number): Recipe{
+    getRecipe(index: number): Recipe {
         return this.recipies[index];
     }
 
-    addIngredientsToShoppingList(ingredients: Ingredient[]){
+    addIngredientsToShoppingList(ingredients: Ingredient[]) {
         this.shoppingListService.addIngredients(ingredients);
     }
 
-    addRecipe(recipe: Recipe){
+    addRecipe(recipe: Recipe) {
         this.recipies.push(recipe);
         this.recipesChanged.next(this.recipies.slice());
     }
 
-    updateRecipe(id: number, recipe: Recipe){
+    updateRecipe(id: number, recipe: Recipe) {
         this.recipies[id] = recipe;
         this.recipesChanged.next(this.recipies.slice());
     }
 
-    removeRecipe(id: number){
+    removeRecipe(id: number) {
         this.recipies.splice(id, 1);
         this.recipesChanged.next(this.recipies.slice());
     }

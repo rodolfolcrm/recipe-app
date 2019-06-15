@@ -5,8 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from "app/app-routing.module";
-import { RecipeStartComponent } from './recipies/recipe-start/recipe-start.component';
-import { RecipeEditComponent } from './recipies/recipe-edit/recipe-edit.component';
 import { SharedModule } from "app/shared/shared.module";
 import { ShoppingListModule } from "app/shopping-list/shopping-list.module";
 import { AuthModule } from "app/auth/auth.module";
