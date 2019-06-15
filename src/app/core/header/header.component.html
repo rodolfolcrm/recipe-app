@@ -10,22 +10,36 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav" *ngIf="authService.isAuthenticated()">
-                <li routerLinkActive="active"><a routerLink="/recipes">Recipies</a></li>
-                <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
+                <li routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse.in">
+                    <a routerLink="/recipes">Recipies</a>
+                </li>
+                <li routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse.in">
+                    <a routerLink="/shopping-list">Shopping
+                        List</a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <ng-template [ngIf]="!authService.isAuthenticated()">
-                    <li><a routerLink="/signin">Login</a></li>
-                    <li><a routerLink="/signup">register</a></li>
+                    <li data-toggle="collapse" data-target=".navbar-collapse.in">
+                        <a routerLink="/signin">Login</a>
+                    </li>
+                    <li data-toggle="collapse" data-target=".navbar-collapse.in">
+                        <a routerLink="/signup">register</a>
+                    </li>
                 </ng-template>
-                <li><a style="cursor: pointer" (click)="onLogout()" *ngIf="authService.isAuthenticated()">Logout</a>
+                <li data-toggle="collapse" data-target=".navbar-collapse.in">
+                    <a style="cursor: pointer" (click)="onLogout()" *ngIf="authService.isAuthenticated()">Logout</a>
                 </li>
                 <li class="dropdown" *ngIf="authService.isAuthenticated()">
                     <a style="cursor: pointer" class="dropdown-toggle" data-toggle="dropdown" role="button">Manage <span
                             class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a style="cursor: pointer" (click)="onSaveData()">Save Data</a></li>
-                        <li><a style="cursor: pointer" (click)="onFetchData()">Fetch Data</a></li>
+                        <li data-toggle="collapse" data-target=".navbar-collapse.in">
+                            <a style="cursor: pointer" (click)="onSaveData()">Save Data</a>
+                        </li>
+                        <li data-toggle="collapse" data-target=".navbar-collapse.in">
+                            <a style="cursor: pointer" (click)="onFetchData()">Fetch Data</a>
+                        </li>
                     </ul>
                 </li>
             </ul>
