@@ -1,1 +1,4 @@
-<h2>Welcome to the Recipe Book</h2>
+<h2 *ngIf="authService.isAuthenticated()">Welcome to the Recipe Book</h2>
+<p *ngIf="!authService.isAuthenticated()">Please <a routerLink="/signin">Login</a> or <a
+        routerLink="/signup">Register</a> to use the Recipe Book!
+</p>
