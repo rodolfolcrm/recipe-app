@@ -1,33 +1,35 @@
 <div class="row">
     <div class="col-xs-6">
-        <form (ngSubmit)="onSignin(f)" #f="ngForm">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="text" 
-                name="email" 
-                id="email" 
-                class="form-control" 
-                placeholder="" aria-describedby="helpId"
-                required
-                ngModel
-                email
-                #email="ngModel">
-                <span *ngIf="!email.valid && email.touched">Please inform a valid email</span>
-            </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" 
-                name="password" 
-                id="password" 
-                class="form-control" 
-                aria-describedby="helpId"
-                required
-                ngModel
-                #password="ngModel">
-                <span *ngIf="!password.valid && password.touched">Please inform a valid password</span>
-            </div>
+        <form (ngSubmit)="onSignin()" class="form">
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input
+                matInput 
+                [formControl]="emailFormControl" 
+                [errorStateMatcher]="matcher"
+                placeholder="Email">
+              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                Please enter a valid email address
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width" appearance="fill">
+              <mat-label>Password</mat-label>
+              <input matInput 
+              [type]="hidePwd ? 'password' : 'text'"
+              [formControl]="passwordFormControl" 
+              [errorStateMatcher]="matcher">
+              <button mat-icon-button matSuffix type='button' (click)="hidePwd = !hidePwd" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePwd">
+                <mat-icon>{{hidePwd ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error *ngIf="passwordFormControl.hasError('required')">
+                Password is <strong>required</strong>
+              </mat-error>
+            </mat-form-field>            
 
-            <button type="submit" class="btn btn-primary" [disabled]="!f.valid">signin</button>
+            <button mat-raised-button color="primary" [disabled]="!emailFormControl.valid || !passwordFormControl.valid">Login</button>
         </form>
     </div>
 </div>

@@ -9,6 +9,10 @@ import { SharedModule } from "app/shared/shared.module";
 import { ShoppingListModule } from "app/shopping-list/shopping-list.module";
 import { AuthModule } from "app/auth/auth.module";
 import { CoreModule } from "app/core/core.module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -22,7 +26,11 @@ import { CoreModule } from "app/core/core.module";
     SharedModule,
     ShoppingListModule,
     AuthModule,
-    CoreModule
+    CoreModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   bootstrap: [AppComponent]
 })
