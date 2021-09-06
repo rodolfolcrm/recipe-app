@@ -10,6 +10,9 @@ import { ShoppingListModule } from "app/shopping-list/shopping-list.module";
 import { AuthModule } from "app/auth/auth.module";
 import { CoreModule } from "app/core/core.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ShoppingListModule,
     AuthModule,
     CoreModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   bootstrap: [AppComponent]
 })
